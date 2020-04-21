@@ -1,0 +1,25 @@
+{
+  "files": {
+    "main.css": "/react-camera/static/css/main.5ecd60fb.chunk.css",
+    "main.js": "/react-camera/static/js/main.040b165d.chunk.js",
+    "main.js.map": "/react-camera/static/js/main.040b165d.chunk.js.map",
+    "runtime-main.js": "/react-camera/static/js/runtime-main.701b2384.js",
+    "runtime-main.js.map": "/react-camera/static/js/runtime-main.701b2384.js.map",
+    "static/css/2.0939e70c.chunk.css": "/react-camera/static/css/2.0939e70c.chunk.css",
+    "static/js/2.61fa23c0.chunk.js": "/react-camera/static/js/2.61fa23c0.chunk.js",
+    "static/js/2.61fa23c0.chunk.js.map": "/react-camera/static/js/2.61fa23c0.chunk.js.map",
+    "index.html": "/react-camera/index.html",
+    "precache-manifest.f125d1a80b23627f9159867d36941720.js": "/react-camera/precache-manifest.f125d1a80b23627f9159867d36941720.js",
+    "service-worker.js": "/react-camera/service-worker.js",
+    "static/css/2.0939e70c.chunk.css.map": "/react-camera/static/css/2.0939e70c.chunk.css.map",
+    "static/css/main.5ecd60fb.chunk.css.map": "/react-camera/static/css/main.5ecd60fb.chunk.css.map",
+    "static/js/2.61fa23c0.chunk.js.LICENSE.txt": "/react-camera/static/js/2.61fa23c0.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.701b2384.js",
+    "static/css/2.0939e70c.chunk.css",
+    "static/js/2.61fa23c0.chunk.js",
+    "static/css/main.5ecd60fb.chunk.css",
+    "static/js/main.040b165d.chunk.js"
+  ]
+}
