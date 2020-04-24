@@ -2,7 +2,9 @@ import React, { useState } from 'react';
 import Camera, { IMAGE_TYPES } from 'react-html5-camera-photo';
 import 'react-html5-camera-photo/build/css/index.css';
 import * as watermark from 'watermarkjs';
-import logo from './logo.png';
+// import logo from './logo.png';
+import ImagePreview from './ImagePreview';
+import molduraChaves from './moldura-chaves.png';
 
 function dataURItoBlob (dataURI) {
   let byteString = atob(dataURI.split(',')[1]);
@@ -55,30 +57,57 @@ function downloadImageFileFomBlob (blob, imageNumber) {
   anchor.dispatchEvent(mouseEvent);
 }
 
-function downloadImageFile (dataUri, imageNumber) {
-  let blob = dataURItoBlob(dataUri);
-  watermark([blob, logo])
-  .image(watermark.image.lowerRight(0.6))
-  .then(img => {
-    let blob = dataURItoBlob(img.src);
-    downloadImageFileFomBlob(blob, imageNumber);
-  });
-}
-
 function App (props) {
   const [imageNumber, setImageNumber] = useState(0);
+  const [dataUri, setDataUri] = useState('');
 
-  function handleTakePhoto (dataUri) {
+  function downloadImageFile (dataUri, imageNumber) {
+    let blob = dataURItoBlob(dataUri);
+    watermark([blob, molduraChaves])
+    .image(watermark.image.center())
+    .then(img => {
+      let blob = dataURItoBlob(img.src);
+      setDataUri(img.src);
+      downloadImageFileFomBlob(blob, imageNumber);
+    });
+  }
+
+  // function handleTakePhoto (dataUri) {
+  //   downloadImageFile(dataUri, imageNumber);
+  //   setImageNumber(imageNumber + 1);
+  // }
+  function handleTakePhotoAnimationDone (dataUri) {
+    console.log('takePhoto');
     downloadImageFile(dataUri, imageNumber);
     setImageNumber(imageNumber + 1);
   }
 
+  function handlerActionButton() {
+    setDataUri('');
+}
+
+  const isFullscreen = false;
   return (
     <div>
-      <Camera
-        onTakePhoto = { (dataUri) => { handleTakePhoto(dataUri); } }
-        imageType={IMAGE_TYPES.PNG}
-      />
+      {
+        (dataUri)
+          ? <ImagePreview dataUri={dataUri}
+              isFullscreen={isFullscreen}
+              action={handlerActionButton}
+            />
+          : <div>
+              <Camera
+                // onTakePhoto = { (dataUri) => { handleTakePhoto(dataUri); } }
+                onTakePhotoAnimationDone = { (dataUri) => { handleTakePhotoAnimationDone(dataUri); } }
+                idealResolution = {{width: 640, height: 480}}
+                imageType={IMAGE_TYPES.PNG}
+                isFullscreen={isFullscreen}
+              />
+              <div style={{position: 'absolute', left: '21.6%', top: '3%'}}>
+                <img src={molduraChaves} style={{width: '770px'}} />
+              </div>
+            </div>
+      }
     </div>
   );
 }
